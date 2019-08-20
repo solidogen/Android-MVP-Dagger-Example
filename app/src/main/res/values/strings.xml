@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SciTube</string>
+    <string name="error">Error loading data</string>
+</resources>
