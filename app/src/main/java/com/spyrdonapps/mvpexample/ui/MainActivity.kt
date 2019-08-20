@@ -15,7 +15,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity(), MainContract.View {
 
     private val youtubeVideoAdapter = YoutubeVideoAdapter()
-    private var restoredInstanceState: Parcelable? = null
+    private var layoutManagerInstanceState: Parcelable? = null
 
     @Inject
     internal lateinit var presenter: MainContract.Presenter
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     private fun handleSavedInstanceStateIfNeeded(savedInstanceState: Bundle?) {
         savedInstanceState?.getParcelable<Parcelable>(LAYOUT_MANAGER_INSTANCE_STATE_TAG)?.let {
-            restoredInstanceState = it
+            layoutManagerInstanceState = it
         }
     }
 
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     private fun restoreRecyclerPositionIfNeeded() {
-        restoredInstanceState?.let {
+        layoutManagerInstanceState?.let {
             recyclerView.layoutManager?.onRestoreInstanceState(it)
         }
     }
